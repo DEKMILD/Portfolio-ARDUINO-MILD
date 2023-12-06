@@ -6,3 +6,124 @@
  int ref_4 = 677;
  int ref_5 = 664;
  int ref_6 = 0;
+
+//--
+
+void fw(){//เดินหน้า
+  if( analog(1) > ref_1 && analog(2) > ref_2 && analog(3)
+ < ref_3 && analog(4) > ref_4 && analog(5) > ref_5) {
+   motor(1,70);
+   motor(2,70);
+}else if( analog(1) > ref_1 && analog(2) > ref_2 && analog(3)
+ < ref_3 && analog(4) < ref_4 && analog(5) > ref_5){
+   motor(1,70);
+   motor(2,70);
+}else if( analog(1) > ref_1 && analog(2) < ref_2 && analog(3)
+ < ref_3 && analog(4) > ref_4 && analog(5) > ref_5 ){
+   motor(1,60);
+   motor(2,-70);
+}else if( analog(1) > ref_1 && analog(2) < ref_2 && analog(3)
+ > ref_3 && analog(4) > ref_4 && analog(5) > ref_5 ){
+   motor(1,60);
+   motor(2,-70);
+ }else if( analog(1) > ref_1 && analog(2) > ref_2 && analog(3)
+ < ref_3 && analog(4) < ref_4 && analog(5) > ref_5 ){
+   motor(1,-60);
+   motor(2,70);
+}else if( analog(1) > ref_1 && analog(2) > ref_2 && analog(3)
+ > ref_3 && analog(4) < ref_4 && analog(5) > ref_5 ){
+   motor(1,-70);
+   motor(2,50);
+ }
+delay(5);
+motor_stop(ALL);
+}
+
+//--
+void go2lt(){ // เดินไปเจอทางแยกตัวT
+while(!( analog(1) < ref_1 && analog(2) < ref_2 &&
+analog(3) < ref_3 && analog(4) < ref_4 && analog(5) <
+ref_5)){
+  fw();
+ }
+ motor(1,40);
+motor(2,60);
+ delay(100);
+ motor_stop(ALL);
+}
+//--
+void go2lt(){ // เดินไปเจอทางเลี้ยวซ้าย
+while(!( analog(1) < ref_1 && analog(2) < ref_2 &&
+analog(3) < ref_3 && analog(4) < ref_4 && analog(5) <
+ref_5 && analog(6) > ref_6 )){
+  fw();
+ }
+ motor_stop(ALL);
+}
+//-
+void go2lt(){ // เดินไปเจอทางเลี้ยวขวา
+while(!( analog(0) > ref_0 && analog(1) < ref_1 &&
+analog(2) < ref_2 && analog(3) < ref_3 && analog(4) <
+ref_4 && analog(5) < ref_5 && analog(6) < ref_6)){
+  fw();
+ }
+ motor_stop(ALL);
+}
+//--
+void go2lt(){ // เดินไปเจอทาง4แยก
+while(!( analog(0) < ref_0 && analog(1) < ref_1 &&
+analog(2) < ref_2 && analog(3) < ref_3 && analog(4) <
+ref_4 && analog(5) < ref_5 && analog(6) < ref_6)){
+  fw();
+ }
+ motor_stop(ALL);
+}
+//--
+void t_l(){ //เลี้ยวซ้าย
+ motor(1,30);
+ motor(2,-50);
+ delay(50);
+ while( analog(3) > ref_3 ){
+  motor(1,30);
+  motor(2,-50);
+  delay(20);
+  motor_stop(ALL);
+ }
+}
+//--
+void t_l(){ //เลี้ยวชวา
+ motor(1,-50);
+ motor(2,30);
+ delay(50);
+ while( analog(3) > ref_3 ){
+  motor(1,-50);
+  motor(2,30);
+  delay(5);
+  motor_stop(ALL);
+ }
+}
+//--
+void Gset(){ //เตรียมservoให้พร้อม
+ servo(2,75); delay(500);
+ servo(1,75); delay(500);
+}
+//--
+void Gkeep(){ //หยิบกล่อง
+ servo(2,10); delay(500);
+ servo(1,10); delay(500);
+ servo(2,10); delay(500);
+}
+//--
+void Gdrop(){ //วางกล่อง
+ servo(2,10); delay(500);
+ servo(1,75); delay(500);
+ servo(2,75); delay(500);
+}
+//--
+void setup() {
+ XIO(); //ATX2 initialie
+}
+
+void loop() {
+
+}
