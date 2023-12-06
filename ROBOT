@@ -1,5 +1,4 @@
-#include <ATX2.h>
-                   //
+#include <ATX2.h> //ATX2 Board
  int ref_0 = 0;
  int ref_1 = 666;
  int ref_2 = 838;
